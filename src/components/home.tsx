@@ -18,7 +18,7 @@ import travellingImg from "@/assets/images/travelling.jpeg";
 import learningImg   from "@/assets/images/learning.jpg";
 import cookingImg    from "@/assets/images/cooking.jpeg";
 import gymmingImg    from "@/assets/images/gymming.jpg";
-
+import wfhubbylogo from "@/assets/images/wfhlogo1.png";
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("projects");
@@ -51,48 +51,43 @@ const Home = () => {
       >
         {/* Navigation Bar */}
         <header className="sticky top-0 z-10 bg-background border-b border-border">
-          <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <nav className="container mx-auto px-4 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-2xl font-bold"
+              className="flex items-center gap-2 text-2xl font-bold"
             >
+              <img src={wfhubbylogo} alt="logo" className="w-12 h-12 rounded-full" />
               @wfhubby
             </motion.div>
-
-            <TabsList className="grid grid-cols-4 w-full max-w-md">
-              <TabsTrigger
-                value="projects"
-                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-              >
-                Projects
-              </TabsTrigger>
-              <TabsTrigger
-                value="about"
-                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-              >
-                About Me
-              </TabsTrigger>
-              <TabsTrigger
-                value="faq"
-                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-              >
-                FAQ
-              </TabsTrigger>
-              <TabsTrigger
-                value="hobbies"
-                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-              >
-                Hobbies
-              </TabsTrigger>
-            </TabsList>
+              <TabsList className="flex flex-wrap gap-4 justify-center w-full md:w-auto">
+                {[
+                  { value: "projects", label: "Projects" },
+                  { value: "about",    label: "About Me" },
+                  { value: "faq",      label: "FAQ" },
+                  { value: "hobbies",  label: "Hobbies" },
+                ].map((tab) => (
+                  <TabsTrigger
+                    key={tab.value}
+                    value={tab.value}
+                    className={`
+                      px-4 py-1 rounded-lg 
+                      data-[state=active]:bg-primary data-[state=active]:text-primary-foreground
+                      hover:bg-gray-50
+                    `}
+                  >
+                    {tab.label}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            
           </nav>
         </header>
 
         <main className="container mx-auto px-4 py-8">
           <TabsContent value="projects" className="mt-6">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-              <h1 className="text-3xl font-bold">My Projects</h1>
+              <h1 className="text-3xl font-bold">My 3 hours Blogsite</h1>
 
               <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
                 <div className="relative w-full sm:w-64">
@@ -210,7 +205,7 @@ I look forward to connecting and exploring potential opportunities together. Pea
           </TabsContent>
 
           <TabsContent value="faq" className="mt-6">
-            <div className="space-y-6">
+            <div className="space-y-6 bg-muted rounded-xl p-6 mb-8">
               <h1 className="text-3xl font-bold">Frequently Asked Questions</h1>
               <div className="space-y-4">
                 {[
@@ -252,7 +247,7 @@ I look forward to connecting and exploring potential opportunities together. Pea
           </TabsContent>
 
           <TabsContent value="hobbies" className="mt-6">
-            <div className="space-y-6">
+            <div className="space-y-6 bg-muted rounded-xl p-6 mb-8">
               <h1 className="text-3xl font-bold">My Hobbies</h1>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {[

@@ -36,7 +36,7 @@ const ProjectCard = ({
     { name: "TypeScript", color: "secondary" },
     { name: "Tailwind", color: "outline" },
   ],
-  date = "April 2023",
+  date = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }),
 }: ProjectCardProps) => {
   return (
     <Card className="h-full flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg bg-card">
